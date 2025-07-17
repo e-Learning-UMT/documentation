@@ -1,3 +1,7 @@
+Title: Completion Webservices
+Date: 2025-07-17
+Slug: completion-webservices
+
 # Platform Bayou UMT Web API – Course Completion Functions & Webhook Documentation
 
 This document provides specific integration information for the following features of the `moodle_umt_web_api` plugin:

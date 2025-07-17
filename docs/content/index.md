@@ -1,3 +1,7 @@
+Title: Welcome to the Docs
+Date: 2025-07-17
+Slug: index
+
 # Documentation Index
 
 Welcome to the documentation for the **e-Learning-UMT** project! This site provides comprehensive guides, references, and information to help you use, contribute to, and understand the project.

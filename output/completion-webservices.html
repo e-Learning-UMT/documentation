@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>Completion Webservices</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+                                <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="e-Learning Platform Services Documentation Atom Feed" />
+    <meta name="description" content="Platform Bayou UMT Web API – Course Completion Functions & Webhook Documentation This document provides specific integration information for the..." />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">e-Learning Platform Services Documentation</a></h1>
+                        <nav><ul>
+                                                <li class="active"><a href="/category/misc.html">misc</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+  <section id="content" class="body">
+    <article>
+      <header>
+        <h1 class="entry-title">
+          <a href="/completion-webservices.html" rel="bookmark"
+             title="Permalink to Completion Webservices">Completion Webservices</a></h1>
+      </header>
+
+      <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2025-07-17T00:00:00+08:00">
+                Published: Thu 17 July 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/bahagian-pembelajaran-digital.html">Bahagian Pembelajaran Digital</a>
+                </address>
+        <p>In <a href="/category/misc.html">misc</a>.</p>
+        
+</footer><!-- /.post-info -->        <h1>Platform Bayou UMT Web API – Course Completion Functions &amp; Webhook Documentation</h1>
+<p>This document provides specific integration information for the following features of the <code>moodle_umt_web_api</code> plugin:</p>
+<ul>
+<li><code>local_umt_web_api_get_course_completion_list</code> REST API function</li>
+<li><code>local_umt_web_api_get_course_completion</code> REST API function</li>
+<li>Course completion webhook</li>
+</ul>
+<hr>
+<h2>1. <code>local_umt_web_api_get_course_completion_list</code></h2>
+<h3>Purpose</h3>
+<p>Lists students with their course completion status. Supports optional filtering by completion state and time range.</p>
+<h3>Endpoint</h3>
+<div class="highlight"><pre><span></span><code>GET https://bayou.umt.edu.my/webservice/rest/server.php
+</code></pre></div>
+
+<h3>Required Parameters</h3>
+<ul>
+<li><code>wstoken</code>: Your Moodle REST API token</li>
+<li><code>moodlewsrestformat</code>: Desired response format (typically <code>json</code>)</li>
+<li><code>wsfunction</code>: <code>local_umt_web_api_get_course_completion_list</code></li>
+</ul>
+<h3>Optional Query Parameters</h3>
+<ul>
+<li><code>coursecode</code>: Course shortname/code</li>
+<li><code>state</code>: Completion state (<code>completed</code>, <code>inprogress</code>, etc.)</li>
+<li><code>timestart</code>: Start of time range (UNIX timestamp)</li>
+<li><code>timeend</code>: End of time range (UNIX timestamp)</li>
+</ul>
+<h3>Sample Request</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET https://bayou.umt.edu.my/webservice/rest/server.php?wstoken=YOURTOKEN&amp;moodlewsrestformat=json&amp;wsfunction=local_umt_web_api_get_course_completion_list&amp;coursecode=ABC123&amp;state=completed&amp;timestart=1704067200&amp;timeend=1706755199</span>
+</code></pre></div>
+
+<h3>Response</h3>
+<p>Returns a list of students, each with:
+- <code>matricnumber</code>
+- <code>fullname</code>
+- <code>completionstate</code>
+- <code>completiondate</code>
+- etc.</p>
+<hr>
+<h2>2. <code>local_umt_web_api_get_course_completion</code></h2>
+<h3>Purpose</h3>
+<p>Fetches course completion status for a specific student and/or course.</p>
+<h3>Endpoint</h3>
+<div class="highlight"><pre><span></span><code>GET https://bayou.umt.edu.my/webservice/rest/server.php
+</code></pre></div>
+
+<h3>Required Parameters</h3>
+<ul>
+<li><code>wstoken</code>: Your Moodle REST API token</li>
+<li><code>moodlewsrestformat</code>: Desired response format (typically <code>json</code>)</li>
+<li><code>wsfunction</code>: <code>local_umt_web_api_get_course_completion</code></li>
+</ul>
+<h3>Query Parameters</h3>
+<ul>
+<li><code>matricnumber</code> (optional): Student's matric number</li>
+<li><code>coursecode</code> (optional): Course shortname/code</li>
+</ul>
+<h3>Sample Request</h3>
+<div class="highlight"><pre><span></span><code><span class="err">GET https://bayou.umt.edu.my/webservice/rest/server.php?wstoken=YOURTOKEN&amp;moodlewsrestformat=json&amp;wsfunction=local_umt_web_api_get_course_completion&amp;matricnumber=MATRIC123&amp;coursecode=ABC123</span>
+</code></pre></div>
+
+<h3>Response</h3>
+<p>Returns status details for the specified student and/or course:
+- <code>completionstate</code>
+- <code>completiondate</code>
+- Additional course/user data</p>
+<hr>
+<h2>3. Course Completion Webhook</h2>
+<h3>Purpose</h3>
+<p>Sends an HTTP POST notification to configured webhook URLs whenever a user completes a course.</p>
+<h3>Configuration</h3>
+<ul>
+<li>Set webhook URLs in plugin settings: <strong>Completion webhook URLs</strong> (<code>completionwebhook</code>)</li>
+<li>Multiple URLs supported (one per line)</li>
+</ul>
+<h3>Trigger</h3>
+<ul>
+<li>Fires on Moodle <code>core\event\course_completed</code> event</li>
+</ul>
+<h3>Payload Format</h3>
+<p>Sent as JSON with content type <code>application/json</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;coursecode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ABC123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;studentmatric&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MATRIC123&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3>Logging &amp; Reports</h3>
+<ul>
+<li>Every webhook call is logged (URL, payload, HTTP status, success)</li>
+<li>Logs are accessible and sortable in the plugin's report page</li>
+</ul>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="https://github.com/e-Learning-UMT/moodle_umt_web_api/WEB_API_DOCUMENTATION.md">Full Plugin Documentation</a></li>
+<li><a href="https://github.com/e-Learning-UMT/moodle_umt_web_api/blob/main/db/services.php">db/services.php</a></li>
+<li><a href="https://github.com/e-Learning-UMT/moodle_umt_web_api/blob/main/README.md">README.md</a></li>
+<li><a href="https://github.com/e-Learning-UMT/moodle_umt_web_api/blob/main/classes/observer.php">Webhook Observer</a></li>
+</ul>
+<hr>
+      </div><!-- /.entry-content -->
+
+    </article>
+  </section>
+                <section id="extras" class="body">
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+                                                        <li><a href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>

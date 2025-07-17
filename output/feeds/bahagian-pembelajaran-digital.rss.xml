@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>e-Learning Platform Services Documentation - Bahagian Pembelajaran Digital</title><link>/</link><description/><atom:link href="/feeds/bahagian-pembelajaran-digital.rss.xml" rel="self"/><lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0800</lastBuildDate><item><title>Completion Webservices</title><link>/completion-webservices.html</link><description>&lt;h1&gt;Platform Bayou UMT Web API – Course Completion Functions &amp;amp; Webhook Documentation&lt;/h1&gt;
+&lt;p&gt;This document provides specific integration information for the following features of the &lt;code&gt;moodle_umt_web_api&lt;/code&gt; plugin:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;local_umt_web_api_get_course_completion_list&lt;/code&gt; REST API function&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;local_umt_web_api_get_course_completion&lt;/code&gt; REST API function&lt;/li&gt;
+&lt;li&gt;Course completion webhook&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;1. &lt;code&gt;local_umt_web_api_get_course_completion_list&lt;/code&gt;&lt;/h2&gt;
+&lt;h3&gt;Purpose&lt;/h3&gt;
+&lt;p&gt;Lists students with their course completion status. Supports optional filtering by completion …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Bahagian Pembelajaran Digital</dc:creator><pubDate>Thu, 17 Jul 2025 00:00:00 +0800</pubDate><guid>tag:None,2025-07-17:/completion-webservices.html</guid><category>misc</category></item><item><title>Welcome to the Docs</title><link>/index.html</link><description>&lt;h1&gt;Documentation Index&lt;/h1&gt;
+&lt;p&gt;Welcome to the documentation for the &lt;strong&gt;e-Learning-UMT&lt;/strong&gt; project! This site provides comprehensive guides, references, and information to help you use, contribute to, and understand the project.&lt;/p&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="intro.md"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="getting_started.md"&gt;Getting Started&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="installation.md"&gt;Installation Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="configuration.md"&gt;Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="usage.md"&gt;Usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="api_reference.md"&gt;API Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="troubleshooting.md"&gt;Troubleshooting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="faq.md"&gt;FAQ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="contributing.md"&gt;Contributing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="license.md"&gt;License&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="changelog.md"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;For more details on each …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Bahagian Pembelajaran Digital</dc:creator><pubDate>Thu, 17 Jul 2025 00:00:00 +0800</pubDate><guid>tag:None,2025-07-17:/index.html</guid><category>misc</category></item></channel></rss>

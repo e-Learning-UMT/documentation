@@ -5,3 +5,6 @@ SITEURL = ''
 PATH = 'docs/content'
 TIMEZONE = 'Asia/Kuala_Lumpur'
 DEFAULT_LANG = 'en'
+
+DELETE_OUTPUT_DIRECTORY = True
+
