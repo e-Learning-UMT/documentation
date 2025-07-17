@@ -5,7 +5,8 @@ SITEURL = ''
 PATH = 'docs/content'
 TIMEZONE = 'Asia/Kuala_Lumpur'
 DEFAULT_LANG = 'en'
-OUTPUT_PATH = '_readthedocs/html'
+# Output path compatible with Read the Docs environment
+OUTPUT_PATH = os.environ.get('READTHEDOCS_OUTPUT', 'output') + '/html'
 
 DELETE_OUTPUT_DIRECTORY = True
 

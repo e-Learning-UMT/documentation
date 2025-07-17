@@ -14,6 +14,5 @@ build:
     # Install Pelican and its dependencies
     - pip install "pelican[markdown]"
     # Build the site and save generated files into Read the Docs directory
-    - rm -rf $READTHEDOCS_OUTPUT/html
     - pelican --settings pelicanconf.py
         
